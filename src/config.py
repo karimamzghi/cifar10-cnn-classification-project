@@ -34,4 +34,3 @@ MODELS_DIR = "./models"
 RESULTS_PATH = "./results/model_tracking.csv"
 CONFUSION_DIR = "./results/confusion_matrices"
 PLOTS_DIR = "./results/plots"
-
