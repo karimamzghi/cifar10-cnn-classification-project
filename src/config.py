@@ -12,6 +12,9 @@ CLASS_NAMES = [
     "dog", "frog", "horse", "ship", "truck",
 ]
 
+# SplitNames configuration
+SPLIT_NAMES = ["x_train", "y_train", "x_val", "y_val", "x_test", "y_test"]
+
 # Compiling configuration
 ADAM_OP = "adam"
 CATEGORICAL_CROSSENTROPY = "categorical_crossentropy"

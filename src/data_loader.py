@@ -5,6 +5,7 @@
 import os
 
 import numpy as np
+from src.config import SPLIT_NAMES
 
 from src import config
 from src.dataset_preprocessing import SPLIT_NAMES, prepare_data

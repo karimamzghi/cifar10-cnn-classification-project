@@ -10,10 +10,9 @@ import numpy as np
 from keras.datasets import cifar10
 from keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
+from src.config import SPLIT_NAMES
 
 from src import config
-
-SPLIT_NAMES = ["x_train", "y_train", "x_val", "y_val", "x_test", "y_test"]
 
 
 def prepare_data():
