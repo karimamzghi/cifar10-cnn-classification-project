@@ -17,6 +17,9 @@ ADAM_OP = "adam"
 CATEGORICAL_CROSSENTROPY = "categorical_crossentropy"
 ACCURACY = "accuracy"
 
+# config.py
+STATE = 42
+
 # Training configuration
 BATCH_SIZE = 64
 EPOCHS = 20
