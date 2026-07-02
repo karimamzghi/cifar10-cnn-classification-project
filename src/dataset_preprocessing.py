@@ -20,6 +20,13 @@ def prepare_data():
 
     (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
+    # Verify and check the data by calling shape of the data
+    print("x_train: ", x_train.shape)
+    print("y_train: ", y_train.shape)
+
+    print("x_test: ", x_test.shape)
+    print("y_test: ", y_test.shape)
+
 # Combine full dataset — Keras' default 50k/10k split isn't 70/15/15
     x_all = np.concatenate([x_train, x_test], axis=0)
     y_all = np.concatenate([y_train, y_test], axis=0).reshape(-1)
