@@ -12,6 +12,9 @@ BATCH_SIZE = 64
 EPOCHS = 20
 LEARNING_RATE = 0.001
 
+# Model configuration
+MODEL_NAME = "model_1_baseline_cnn"
+
 # Paths
-RESULTS_PATH = "results/model_tracking.csv"
-MODELS_DIR = "models"
+RESULTS_PATH = "./results/model_tracking.csv"
+MODELS_DIR = "./models"

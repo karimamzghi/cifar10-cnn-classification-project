@@ -13,7 +13,7 @@ def save_experiment_results(result, results_path):
 
     new_result_df = pd.DataFrame([result])
 
-    if os.path.exists(results_path):
+    if os.path.exists(results_path) and os.path.getsize(results_path) > 0:
         existing_results_df = pd.read_csv(results_path)
         updated_results_df = pd.concat(
             [existing_results_df, new_result_df],
@@ -25,3 +25,4 @@ def save_experiment_results(result, results_path):
     updated_results_df.to_csv(results_path, index=False)
 
     return updated_results_df
+
