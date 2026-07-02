@@ -182,6 +182,15 @@ results/confusion_matrices/
 # Planned Experiments
 
 - [x] Baseline CNN
+- [ ] Deeper CNN               
+- [ ] Dropout (0.3–0.5)        
+- [ ] Adam instead of SGD Optimizer effect
+- [ ] Batch Normalization
+- [ ] Data augmentation (flip, rotation, zoom)
+- [ ] Early stopping on val_loss
+- [ ] Best-so-far combo (e.g. deep + BN + dropout + aug)
+- [ ] MobileNetV2 frozen (transfer learning)
+- [ ] MobileNetV2 fine-tuned (unfreeze top, lr=1e-5)
 
 ---
 
