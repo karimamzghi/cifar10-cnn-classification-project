@@ -25,24 +25,49 @@ This project is part of the AI Engineering Bootcamp and is being developed incre
 ## Project Structure
 
 ```
-cifar10-cnn-classification-project/
+## Project Structure
 
-├── deployment/
+``` cifar10-cnn-classification-project
+cifar10-cnn-classification-project/
 │
-├── models/
+├── deployment/
+│   └── app.py                        # Deployment application
+│
+├── models/                           # Saved trained models (.keras)
 │
 ├── notebooks/
-│   └── baseline_cnn.ipynb
+│   ├── 01_baseline_cnn.ipynb
+│   ├── 02_deeper_cnn.ipynb
+│   ├── 03_dropout_cnn.ipynb
+│   ├── 04_adam_optimizer.ipynb
+│   ├── 05_batch_normalization.ipynb
+│   ├── 06_data_augmentation.ipynb
+│   ├── 07_early_stopping.ipynb
+│   ├── 08_larger_cnn.ipynb
+│   ├── 09_mobilenet_frozen.ipynb
+│   └── 10_mobilenet_finetuned.ipynb
 │
 ├── results/
-│   ├── confusion_matrices/
-│   └── model_tracking.csv
+│   ├── confusion_matrices/           # Saved confusion matrices
+│   ├── plots/                        # Training curves
+│   └── model_tracking.csv            # Experiment tracking
 │
 ├── src/
 │   ├── __init__.py
-│   ├── config.py
+│   ├── config.py                     # Project configuration
+│   ├── data_loader.py                # Load cached or prepare dataset
+│   ├── dataset_processing.py         # Dataset preprocessing & caching
+│   ├── experiment_tracker.py         # Save experiment metadata
+│   │
+│   └── training/
+│       ├── __init__.py
+│       ├── model_builder.py          # CNN architectures
+│       ├── trainer.py                # Compile, train & save models
+│       ├── evaluator.py              # Accuracy, precision, recall & confusion matrix
+│       └── predictor.py              # Predict single images
 │
 ├── README.md
+└── .gitignore
 ```
 
 ---
@@ -139,18 +164,22 @@ Loss Function:
 ---
 
 # Evaluation
+Each experiment generates:
 
-Each model will be evaluated using:
-
-- Accuracy
-- precision
-- recall
+- Saved trained model (.keras)
 - Confusion Matrix
+- Precision
+- Recall
+- Accuracy
+- Experiment metadata
 
-Current Confusion metrics and plots are stored under:
+# Results
+Results are automatically stored under:
 
 ```
-results/
+models/
+results/model_tracking.csv
+results/confusion_matrices/
 ```
 
 ---
@@ -163,10 +192,10 @@ results/
 - [X] Adam instead of SGD Optimizer effect
 - [X] Batch Normalization
 - [X] Data augmentation (flip, rotation, zoom)
-- [ ] Early stopping on val_loss
-- [ ] Best-so-far combo (e.g. deep + BN + dropout + aug)
-- [ ] MobileNetV2 frozen (transfer learning)
-- [ ] MobileNetV2 fine-tuned (unfreeze top, lr=1e-5)
+- [X] Early stopping on val_loss
+- [X] Best-so-far combo (e.g. deep + BN + dropout + aug)
+- [X] MobileNetV2 frozen (transfer learning)
+- [X] MobileNetV2 fine-tuned (unfreeze top, lr=1e-5)
 
 ---
 
@@ -177,4 +206,9 @@ Planned deployment:
 - TBD
 
 ---
+# Author
 
+**Karima Mzoughi**
+
+- GitHub: https://github.com/karimamzghi
+- LinkedIn: https://www.linkedin.com/in/karimamzghi/
