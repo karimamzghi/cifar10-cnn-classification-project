@@ -1,6 +1,6 @@
 # cifar10-cNN-classification-project
 
-## 📌 Project Overview
+## Project Overview
 
 This project explores image classification using **Convolutional Neural Networks (CNNs)** on the **CIFAR-10** dataset.
 
@@ -10,7 +10,7 @@ This project is part of the AI Engineering Bootcamp and is being developed incre
 
 ---
 
-## 🎯 Objectives
+## Objectives
 
 - Build a baseline CNN from scratch
 - Experiment with multiple CNN architectures
@@ -22,7 +22,7 @@ This project is part of the AI Engineering Bootcamp and is being developed incre
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 cifar10-cnn-classification-project/
@@ -80,6 +80,7 @@ Current preprocessing pipeline:
 - One-hot encode labels
 
 Current split:
+Concatenated all the data and then did the split to get even data sets.
 
 | Dataset | Images |
 |---------|-------:|
@@ -123,35 +124,8 @@ results/model_tracking.csv
 Current baseline architecture:
 
 ```
-Input (32×32×3)
+Input (32×32×3) -> Conv2D (32) -> MaxPooling -> Conv2D (32) -> MaxPooling -> Flatten -> Dense (64) -> Softmax (10)
 
-↓
-
-Conv2D (32)
-
-↓
-
-MaxPooling
-
-↓
-
-Conv2D (64)
-
-↓
-
-MaxPooling
-
-↓
-
-Flatten
-
-↓
-
-Dense (64)
-
-↓
-
-Softmax (10)
 ```
 
 Optimizer:
@@ -169,12 +143,14 @@ Loss Function:
 Each model will be evaluated using:
 
 - Accuracy
+- precision
+- recall
 - Confusion Matrix
 
-Current confusion matrices are stored under:
+Current Confusion metrics and plots are stored under:
 
 ```
-results/confusion_matrices/
+results/
 ```
 
 ---
@@ -182,11 +158,11 @@ results/confusion_matrices/
 # Planned Experiments
 
 - [x] Baseline CNN
-- [ ] Deeper CNN               
-- [ ] Dropout (0.3–0.5)        
-- [ ] Adam instead of SGD Optimizer effect
-- [ ] Batch Normalization
-- [ ] Data augmentation (flip, rotation, zoom)
+- [X] Deeper CNN               
+- [X] Dropout (0.3–0.5)        
+- [X] Adam instead of SGD Optimizer effect
+- [X] Batch Normalization
+- [X] Data augmentation (flip, rotation, zoom)
 - [ ] Early stopping on val_loss
 - [ ] Best-so-far combo (e.g. deep + BN + dropout + aug)
 - [ ] MobileNetV2 frozen (transfer learning)
@@ -198,7 +174,7 @@ results/confusion_matrices/
 
 Planned deployment:
 
-- Vercel
+- TBD
 
 ---
 
