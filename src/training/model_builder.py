@@ -5,6 +5,9 @@ from pyexpat import model
 from tensorflow import keras
 from tensorflow.keras import layers
 
+from tensorflow.keras.applications import MobileNetV2
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+
 from src import config
 
 # Build Model 4: CNN with Dropout: Add a Dropout layer after the Dense layer to reduce overfitting.
@@ -151,6 +154,71 @@ def build_larger_augmented_cnn():
             layers.Dense(config.NUM_CLASSES, activation="softmax"),
         ],
         name="larger_augmented_cnn"
+    )
+
+    return model
+
+# Build Model 9: MobileNetV2 with Frozen Base: Use the MobileNetV2 architecture with pre-trained weights from ImageNet, freeze the base layers, and add custom classification layers on top.
+def build_mobilenet_frozen():
+    base_model = MobileNetV2(
+        weights="imagenet",
+        include_top=False,
+        input_shape=config.INPUT_SHAPE
+    )
+
+    base_model.trainable = False
+
+    model = keras.Sequential(
+        [
+            keras.Input(shape=config.INPUT_SHAPE),
+
+            layers.Lambda(lambda x: preprocess_input(x * 255.0)),
+
+            base_model,
+
+            layers.GlobalAveragePooling2D(),
+
+            layers.Dense(128, activation="relu"),
+            layers.Dropout(0.5),
+
+            layers.Dense(config.NUM_CLASSES, activation="softmax"),
+        ],
+        name="mobilenet_frozen"
+    )
+
+    return model
+
+
+# Build Model 10: MobileNetV2 with Fine-Tuning: Use the MobileNetV2 architecture with pre-trained weights from ImageNet, unfreeze the top layers of the base model for fine-tuning, and add custom classification layers on top.
+def build_mobilenet_finetuned():
+    base_model = MobileNetV2(
+        weights="imagenet",
+        include_top=False,
+        input_shape=config.INPUT_SHAPE
+    )
+
+    base_model.trainable = True
+
+    # Freeze most layers, fine-tune only the top part
+    for layer in base_model.layers[:-30]:
+        layer.trainable = False
+
+    model = keras.Sequential(
+        [
+            keras.Input(shape=config.INPUT_SHAPE),
+
+            layers.Lambda(lambda x: preprocess_input(x * 255.0)),
+
+            base_model,
+
+            layers.GlobalAveragePooling2D(),
+
+            layers.Dense(128, activation="relu"),
+            layers.Dropout(0.5),
+
+            layers.Dense(config.NUM_CLASSES, activation="softmax"),
+        ],
+        name="mobilenet_finetuned"
     )
 
     return model
