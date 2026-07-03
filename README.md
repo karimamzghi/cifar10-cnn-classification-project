@@ -144,24 +144,240 @@ results/model_tracking.csv
 
 ---
 
-# Baseline Model
+# Model Architectures
 
-Current baseline architecture:
+## Model 1 — Baseline CNN
 
+**Purpose:** Establish a baseline performance for comparison with more advanced CNN architectures.
+
+```text
+Input (32×32×3)
+│
+├── Conv2D (32)
+├── MaxPooling2D
+├── Conv2D (32)
+├── MaxPooling2D
+├── Flatten
+├── Dense (64)
+└── Softmax (10)
 ```
-Input (32×32×3) -> Conv2D (32) -> MaxPooling -> Conv2D (32) -> MaxPooling -> Flatten -> Dense (64) -> Softmax (10)
 
-```
+**Optimizer:** SGD
 
-Optimizer:
-
-- SGD
-
-Loss Function:
-
-- Categorical Crossentropy
+**Loss Function:** Categorical Crossentropy
 
 ---
+
+## Model 2 — Deep CNN
+
+**Purpose:** Evaluate whether increasing the network depth improves feature extraction and classification performance.
+
+```text
+Input (32×32×3)
+│
+├── Conv2D (32)
+├── Conv2D (32)
+├── MaxPooling2D
+│
+├── Conv2D (64)
+├── Conv2D (64)
+├── MaxPooling2D
+│
+├── Flatten
+├── Dense (64)
+└── Softmax (10)
+```
+
+**Optimizer:** SGD
+
+**Loss Function:** Categorical Crossentropy
+
+---
+
+## Model 3 — Deep CNN with Dropout
+
+**Purpose:** Reduce overfitting by introducing Dropout before the output layer.
+
+```text
+Input (32×32×3)
+│
+├── Conv2D (32)
+├── Conv2D (32)
+├── MaxPooling2D
+│
+├── Conv2D (64)
+├── Conv2D (64)
+├── MaxPooling2D
+│
+├── Flatten
+├── Dense (64)
+├── Dropout (0.5)
+└── Softmax (10)
+```
+
+**Optimizer:** SGD
+
+**Loss Function:** Categorical Crossentropy
+
+---
+
+## Model 4 — Deep CNN with Adam Optimizer
+
+**Purpose:** Compare the Adam optimizer against SGD while keeping the architecture unchanged.
+
+**Architecture**
+
+Same as Model 3.
+
+**Optimizer:** Adam
+
+**Loss Function:** Categorical Crossentropy
+
+---
+
+## Model 5 — Deep CNN with Batch Normalization
+
+**Purpose:** Improve convergence speed and training stability using Batch Normalization.
+
+```text
+Input (32×32×3)
+│
+├── Conv2D (32)
+├── BatchNormalization
+├── Conv2D (32)
+├── BatchNormalization
+├── MaxPooling2D
+│
+├── Conv2D (64)
+├── BatchNormalization
+├── Conv2D (64)
+├── BatchNormalization
+├── MaxPooling2D
+│
+├── Flatten
+├── Dense (64)
+├── BatchNormalization
+├── Dropout (0.5)
+└── Softmax (10)
+```
+
+**Optimizer:** Adam
+
+**Loss Function:** Categorical Crossentropy
+
+---
+
+## Model 6 — Augmented CNN
+
+**Purpose:** Improve model generalization through image augmentation.
+
+**Architecture**
+
+Same as Model 5 with an image augmentation layer.
+
+**Data Augmentation**
+
+- Random Flip
+- Random Rotation
+- Random Zoom
+
+**Optimizer:** Adam
+
+---
+
+## Model 7 — Augmented CNN with Early Stopping
+
+**Purpose:** Prevent overfitting by stopping training once validation performance stops improving.
+
+**Architecture**
+
+Same as Model 6.
+
+**Training Strategy**
+
+- Early Stopping
+- Restore Best Weights
+
+**Optimizer:** Adam
+
+---
+
+## Model 8 — Large Augmented CNN
+
+**Purpose:** Evaluate whether increasing the network capacity improves classification performance.
+
+```text
+Input (32×32×3)
+│
+├── Data Augmentation
+│
+├── Conv2D (32)
+├── Conv2D (32)
+├── MaxPooling2D
+│
+├── Conv2D (64)
+├── Conv2D (64)
+├── MaxPooling2D
+│
+├── Conv2D (128)
+├── Conv2D (128)
+├── MaxPooling2D
+│
+├── Flatten
+├── Dense (128)
+├── Dropout (0.5)
+└── Softmax (10)
+```
+
+**Optimizer:** Adam
+
+---
+
+## Model 9 — MobileNetV2 Transfer Learning
+
+**Purpose:** Leverage pretrained ImageNet features for image classification.
+
+```text
+Input (32×32×3)
+│
+├── MobileNetV2 (Frozen)
+├── GlobalAveragePooling2D
+├── Dense (128)
+├── Dropout (0.5)
+└── Softmax (10)
+```
+
+**Optimizer:** Adam
+
+**Transfer Learning**
+
+- ImageNet pretrained weights
+- Base model frozen
+
+---
+
+## Model 10 — MobileNetV2 Fine-Tuning
+
+**Purpose:** Fine-tune the upper MobileNetV2 layers to adapt pretrained features to the CIFAR-10 dataset.
+
+```text
+Input (32×32×3)
+│
+├── MobileNetV2 (Fine-tuned)
+├── GlobalAveragePooling2D
+├── Dense (128)
+├── Dropout (0.5)
+└── Softmax (10)
+```
+
+**Optimizer:** Adam
+
+**Learning Rate:** 1e-5
+
+**Transfer Learning**
+- Pretrained MobileNetV2 weights loaded from ImageNet.
+- Only the final MobileNetV2 layers were unfrozen for training.
+- A small learning rate (1e-5) was used to fine-tune the pretrained features.
 
 # Evaluation
 Each experiment generates:
