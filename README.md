@@ -139,18 +139,22 @@ Loss Function:
 ---
 
 # Evaluation
+Each experiment generates:
 
-Each model will be evaluated using:
-
-- Accuracy
-- precision
-- recall
+- Saved trained model (.keras)
 - Confusion Matrix
+- Precision
+- Recall
+- Accuracy
+- Experiment metadata
 
-Current Confusion metrics and plots are stored under:
+# Results
+Results are automatically stored under:
 
 ```
-results/
+models/
+results/model_tracking.csv
+results/confusion_matrices/
 ```
 
 ---
@@ -163,10 +167,10 @@ results/
 - [X] Adam instead of SGD Optimizer effect
 - [X] Batch Normalization
 - [X] Data augmentation (flip, rotation, zoom)
-- [ ] Early stopping on val_loss
-- [ ] Best-so-far combo (e.g. deep + BN + dropout + aug)
-- [ ] MobileNetV2 frozen (transfer learning)
-- [ ] MobileNetV2 fine-tuned (unfreeze top, lr=1e-5)
+- [X] Early stopping on val_loss
+- [X] Best-so-far combo (e.g. deep + BN + dropout + aug)
+- [X] MobileNetV2 frozen (transfer learning)
+- [X] MobileNetV2 fine-tuned (unfreeze top, lr=1e-5)
 
 ---
 
@@ -177,4 +181,9 @@ Planned deployment:
 - TBD
 
 ---
+# Author
 
+**Karima Mzoughi**
+
+- GitHub: https://github.com/karimamzghi
+- LinkedIn: https://www.linkedin.com/in/karimamzghi/
