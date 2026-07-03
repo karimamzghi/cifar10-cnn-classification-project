@@ -20,6 +20,7 @@ def prepare_data():
 
     (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
+
     # Verify and check the data by calling shape of the data
     print("x_train: ", x_train.shape)
     print("y_train: ", y_train.shape)

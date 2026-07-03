@@ -1,6 +1,7 @@
 # Dataset configuration
 NUM_CLASSES = 10
 INPUT_SHAPE = (32, 32, 3)
+TARGET_SIZE = (32, 32)  # For image resizing during prediction
 
 # Split configuration (70 / 15 / 15)
 TEST_SIZE = 0.15
@@ -29,7 +30,7 @@ EPOCHS = 20
 LEARNING_RATE = 0.001
 
 # Model configuration
-MODEL_NAME = "1_model_1_baseline_cnn"
+MODEL_NAME = "model_1_baseline_cnn"
 MODEL_ID = 1
 
 # Paths
