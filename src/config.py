@@ -29,10 +29,6 @@ BATCH_SIZE = 64
 EPOCHS = 20
 LEARNING_RATE = 0.001
 
-# Model configuration
-MODEL_NAME = "model_1_baseline_cnn"
-MODEL_ID = 1
-
 # Paths
 DATA_DIR = "./data/processed"
 MODELS_DIR = "./models"
