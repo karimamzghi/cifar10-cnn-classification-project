@@ -27,7 +27,7 @@ This project is part of the AI Engineering Bootcamp and is being developed incre
 ```
 ## Project Structure
 
-```
+``` cifar10-cnn-classification-project
 cifar10-cnn-classification-project/
 │
 ├── deployment/
