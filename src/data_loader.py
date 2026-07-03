@@ -1,24 +1,15 @@
-# load_data allows us to access the cached dataset splits (train/val/test) as numpy arrays.
-# If the cache is missing, it calls dataset_preprocessing.prepare_data()
-# load_data returns (x_train, y_train, x_val, y_val, x_test, y_test)
-
 import os
-
 import numpy as np
-from src.config import SPLIT_NAMES
-
 from src import config
-from src.dataset_processing import prepare_data
 
-
+#   Load preprocessed CIFAR-10 arrays from Drive (fast).
 def load_data():
-    first_file = os.path.join(config.DATA_DIR, "x_train.npy")
+    x_train = np.load(os.path.join(config.DATA_DIR, "x_train.npy"))
+    y_train = np.load(os.path.join(config.DATA_DIR, "y_train.npy"))
+    x_test = np.load(os.path.join(config.DATA_DIR, "x_test.npy"))
+    y_test = np.load(os.path.join(config.DATA_DIR, "y_test.npy"))
 
-    if not os.path.exists(first_file):
-        print("Cache not found, running dataset_preprocessing and loading the data...")
-        return prepare_data()
+    print(f"x_train: {x_train.shape} | y_train: {y_train.shape}")
+    print(f"x_test:  {x_test.shape} | y_test:  {y_test.shape}")
 
-    return tuple(
-        np.load(os.path.join(config.DATA_DIR, f"{name}.npy"))
-        for name in SPLIT_NAMES
-    )
+    return x_train, y_train, x_test, y_test

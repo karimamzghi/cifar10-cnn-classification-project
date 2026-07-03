@@ -34,8 +34,8 @@ EARLY_STOPPING_PATIENCE = 5
 EARLY_STOPPING_MONITOR = "val_loss"
 
 # Paths
-DATA_DIR = "./data/processed"
-MODELS_DIR = "./models"
-RESULTS_PATH = "./results/model_tracking.csv"
-CONFUSION_DIR = "./results/confusion_matrices"
-PLOTS_DIR = "./results/plots"
+DATA_DIR = "/content/drive/MyDrive/cifar10-project/data/processed"
+MODELS_DIR = "/content/drive/MyDrive/cifar10-project/models"
+RESULTS_PATH = "/content/drive/MyDrive/cifar10-project/results/model_tracking.csv"
+CONFUSION_DIR = "/content/drive/MyDrive/cifar10-project/results/confusion_matrices"
+PLOTS_DIR = "/content/drive/MyDrive/cifar10-project/results/plots"
