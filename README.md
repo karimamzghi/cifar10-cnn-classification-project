@@ -25,24 +25,49 @@ This project is part of the AI Engineering Bootcamp and is being developed incre
 ## Project Structure
 
 ```
-cifar10-cnn-classification-project/
+## Project Structure
 
-├── deployment/
+```text
+cifar10-cnn-classification-project/
 │
-├── models/
+├── deployment/
+│   └── app.py                        # Deployment application
+│
+├── models/                           # Saved trained models (.keras)
 │
 ├── notebooks/
-│   └── baseline_cnn.ipynb
+│   ├── 01_baseline_cnn.ipynb
+│   ├── 02_deeper_cnn.ipynb
+│   ├── 03_dropout_cnn.ipynb
+│   ├── 04_adam_optimizer.ipynb
+│   ├── 05_batch_normalization.ipynb
+│   ├── 06_data_augmentation.ipynb
+│   ├── 07_early_stopping.ipynb
+│   ├── 08_larger_cnn.ipynb
+│   ├── 09_mobilenet_frozen.ipynb
+│   └── 10_mobilenet_finetuned.ipynb
 │
 ├── results/
-│   ├── confusion_matrices/
-│   └── model_tracking.csv
+│   ├── confusion_matrices/           # Saved confusion matrices
+│   ├── plots/                        # Training curves
+│   └── model_tracking.csv            # Experiment tracking
 │
 ├── src/
 │   ├── __init__.py
-│   ├── config.py
+│   ├── config.py                     # Project configuration
+│   ├── data_loader.py                # Load cached or prepare dataset
+│   ├── dataset_processing.py         # Dataset preprocessing & caching
+│   ├── experiment_tracker.py         # Save experiment metadata
+│   │
+│   └── training/
+│       ├── __init__.py
+│       ├── model_builder.py          # CNN architectures
+│       ├── trainer.py                # Compile, train & save models
+│       ├── evaluator.py              # Accuracy, precision, recall & confusion matrix
+│       └── predictor.py              # Predict single images
 │
 ├── README.md
+└── .gitignore
 ```
 
 ---
