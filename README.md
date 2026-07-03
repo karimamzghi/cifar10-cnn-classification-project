@@ -24,6 +24,8 @@ This project is part of the AI Engineering Bootcamp and is being developed incre
 
 ## Project Structure
 
+Tried to apply clean coding principals by creating reusable moduls and single responsability patterns by making each method responsible to deliver single outcome.
+
 ```
 ## Project Structure
 
