@@ -62,9 +62,8 @@ def save_confusion_matrix(test_labels, test_predictions, output_path, title):
 
     cm = confusion_matrix(test_labels, test_predictions)
 
-    ax = plt.subplots(figsize=(10, 10))
+    fig, ax = plt.subplots(figsize=(10, 10))
 
-    # Create a ConfusionMatrixDisplay object and plot the confusion matrix
     display = ConfusionMatrixDisplay(
         confusion_matrix=cm,
         display_labels=config.CLASS_NAMES
@@ -77,12 +76,13 @@ def save_confusion_matrix(test_labels, test_predictions, output_path, title):
         xticks_rotation=45
     )
 
-    plt.title(plt.title)
-    plt.xlabel('Predicted')
-    plt.ylabel('Actual')
+    plt.title(title)
+    plt.xlabel("Predicted")
+    plt.ylabel("Actual")
 
     # Save the confusion matrix plot to the specified output path
     plt.savefig(output_path, bbox_inches="tight")
     plt.show()
 
     return output_path
+

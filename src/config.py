@@ -29,6 +29,10 @@ BATCH_SIZE = 64
 EPOCHS = 20
 LEARNING_RATE = 0.001
 
+# Early stopping configuration
+EARLY_STOPPING_PATIENCE = 5
+EARLY_STOPPING_MONITOR = "val_loss"
+
 # Paths
 DATA_DIR = "./data/processed"
 MODELS_DIR = "./models"

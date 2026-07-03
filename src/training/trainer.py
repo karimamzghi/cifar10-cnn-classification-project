@@ -33,7 +33,7 @@ def train_model(
 
     callbacks = []
     if early_stopping:
-        callbacks.append(EarlyStopping(monitor="val_loss", patience=5,
+        callbacks.append(EarlyStopping(monitor=config.EARLY_STOPPING_MONITOR, patience=config.EARLY_STOPPING_PATIENCE,
                                        restore_best_weights=True))
 
     start = time.time()
