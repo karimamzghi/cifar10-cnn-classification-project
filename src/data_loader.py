@@ -8,7 +8,7 @@ import numpy as np
 from src.config import SPLIT_NAMES
 
 from src import config
-from src.dataset_processing import SPLIT_NAMES, prepare_data
+from src.dataset_processing import prepare_data
 
 
 def load_data():

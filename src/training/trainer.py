@@ -20,8 +20,16 @@ def compile_model(model, optimizer, loss, metrics):
     return model
 
 
-def train_model(data, model, batch_size, epochs, early_stopping=False):
-    x_train, y_train, x_val, y_val, x_test, y_test = data
+def train_model(
+        model,
+        x_train,
+        y_train,
+        x_val,
+        y_val,
+        batch_size,
+        epochs, 
+        early_stopping=False
+    ):
 
     callbacks = []
     if early_stopping:
